@@ -1,4 +1,5 @@
 import React from 'react'
+import DateTime from 'react-datetime'
 
 import DashboardComponent from '../component/Component'
 import { fireDatabase } from '../../../utils/fire'
@@ -33,12 +34,14 @@ export default class DashboardContainer extends React.Component {
   }
 
   render() {
+    console.log(this.props.userAuthObject)
     return (
       <div>
         <DashboardComponent news={this.state.news} router={this.props.router} />
         {this.state.subjects.map(subject => (
           <div key={subject.id}>{subject.subjectName}</div>
         ))}
+        <DateTime />
       </div>
     )
   }

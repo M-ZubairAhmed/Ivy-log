@@ -5,4 +5,4 @@ const fire = firebase.initializeApp(firebaseSecrets)
 
 export const fireDatabase = fire.database()
 
-export const fireAuth = fire.auth
+export const fireAuth = fire.auth()

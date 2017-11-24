@@ -25,7 +25,12 @@ export default class Pages extends React.Component {
   renderPage = selectedPage => {
     switch (selectedPage) {
       case 'dashboard':
-        return <DashboardContainer router={this.router} />
+        return (
+          <DashboardContainer
+            router={this.router}
+            userAuthObject={this.props.userAuthObject}
+          />
+        )
       case 'explore':
         return <ExploreContainer />
       case 'schedule':

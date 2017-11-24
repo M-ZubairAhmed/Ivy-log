@@ -6,7 +6,7 @@ export default props => (
     <Header size="medium">Campus news</Header>
     {props.news.length !== 0 ? (
       <Card.Group>
-        {props.news.splice(1, 4).map(article => (
+        {props.news.map(article => (
           <Card href={article.url} target="_blank" key={article.url}>
             <Card.Content>
               <Card.Header as="p" style={{ fontWeight: '300' }}>

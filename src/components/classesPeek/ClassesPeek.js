@@ -18,9 +18,9 @@ export default props => (
         <Statistic.Label>in 6 days</Statistic.Label>
       </Statistic>
       <Statistic color="grey">
-        <Statistic.Value style={{ cursor: 'pointer' }}>
+        <Statistic.Label style={{ cursor: 'pointer', color: 'grey' }}>
           {props.actionText}
-        </Statistic.Value>
+        </Statistic.Label>
       </Statistic>
     </Statistic.Group>
   </Segment>

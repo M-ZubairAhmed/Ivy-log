@@ -1,9 +1,8 @@
 import React from 'react'
-import axios from 'axios'
 
 import DashboardComponent from '../component/Component'
 import { fireDatabase } from '../../../utils/fire'
-import { newsURL } from '../../../utils/secrets'
+import { newsData } from '../../../utils/dummyData'
 
 export default class DashboardContainer extends React.Component {
   constructor() {
@@ -11,9 +10,10 @@ export default class DashboardContainer extends React.Component {
     this.state = {
       subjects: [],
       loading: true,
-      news: [],
+      news: newsData,
     }
   }
+
   async componentDidMount() {
     const allSubjectsDb = fireDatabase.ref('Classes')
     allSubjectsDb.on('value', snapshot => {
@@ -30,12 +30,8 @@ export default class DashboardContainer extends React.Component {
         loading: false,
       })
     })
-    const newsResponse = await axios.get(newsURL)
-    const news = await newsResponse.data.articles
-    await this.setState({
-      news,
-    })
   }
+
   render() {
     return (
       <div>

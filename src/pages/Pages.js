@@ -32,7 +32,7 @@ export default class Pages extends React.Component {
         <Header />
         <div style={{ display: 'flex', minHeight: '90vh' }}>
           <Sidebar />
-          <div style={{ flex: '1 1 auto' }}>
+          <div style={{ flex: '1 1 auto', padding: '1rem' }}>
             <DashboardContainer />
           </div>
         </div>

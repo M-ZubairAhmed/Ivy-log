@@ -7,7 +7,7 @@ export default props => (
     {props.news.length !== 0 ? (
       <Card.Group>
         {props.news.splice(1, 4).map(article => (
-          <Card href={article.url}>
+          <Card href={article.url} key={article.url}>
             <Card.Content>
               <Card.Header as="p" style={{ fontWeight: '300' }}>
                 {article.title}

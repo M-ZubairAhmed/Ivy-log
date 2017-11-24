@@ -7,7 +7,7 @@ export default props => (
     <Statistic.Group size="mini" widths="four">
       <Statistic>
         <Statistic.Value>Physics</Statistic.Value>
-        <Statistic.Label text>in 5 days</Statistic.Label>
+        <Statistic.Label>in 5 days</Statistic.Label>
       </Statistic>
       <Statistic>
         <Statistic.Value>Three</Statistic.Value>
@@ -18,7 +18,7 @@ export default props => (
         <Statistic.Label>in 6 days</Statistic.Label>
       </Statistic>
       <Statistic color="grey">
-        <Statistic.Value text style={{ cursor: 'pointer' }}>
+        <Statistic.Value style={{ cursor: 'pointer' }}>
           {props.actionText}
         </Statistic.Value>
       </Statistic>

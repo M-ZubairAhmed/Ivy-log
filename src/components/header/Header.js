@@ -1,5 +1,5 @@
 import React from 'react'
-import { Menu, Dropdown, Image, Icon } from 'semantic-ui-react'
+import { Menu, Dropdown, Image } from 'semantic-ui-react'
 
 export default class Header extends React.Component {
   handleChange = (e, { value }) => {
@@ -24,9 +24,6 @@ export default class Header extends React.Component {
   render() {
     return (
       <Menu borderless style={{ marginBottom: '0px' }}>
-        <Menu.Item onClick={this.props.toggleSibebar}>
-          <Icon name="content" size="large" />
-        </Menu.Item>
         <Menu.Item header>Teacher/Student Log</Menu.Item>
         <Menu.Menu position="right">
           <Dropdown

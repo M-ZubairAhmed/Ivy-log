@@ -1,8 +1,9 @@
 import React from 'react'
-import { Sidebar, Menu, Icon } from 'semantic-ui-react'
 
 import Header from '../components/header/Header'
+import Sidebar from '../components/sidebar/Sidebar'
 import DashboardContainer from './dashboard/container/Container'
+import ExploreContainer from './explore/container/container'
 
 export default class Pages extends React.Component {
   constructor(props) {
@@ -10,49 +11,31 @@ export default class Pages extends React.Component {
     this.state = {
       sidebarVisible: false,
       sidebarContentDim: false,
+      currentPage: 'dashboard',
     }
   }
 
-  toggleSibebar = () => {
-    this.setState({
-      sidebarVisible: !this.state.sidebarVisible,
-      sidebarContentDim: !this.state.sidebarContentDim,
-    })
+  router(page) {
+    switch (page) {
+      case 'dashboard':
+        return <DashboardContainer />
+      case 'explore':
+        return <ExploreContainer />
+      default:
+        return <div>Under construction</div>
+    }
   }
 
   render() {
     return (
       <div>
-        <Header toggleSibebar={this.toggleSibebar} />
-        <Sidebar.Pushable style={{ height: '100vh' }}>
-          <Sidebar
-            as={Menu}
-            animation="push"
-            width="thin"
-            visible={this.state.sidebarVisible}
-            icon="labeled"
-            vertical>
-            <Menu.Item name="home">
-              <Icon name="home" />
-              Home
-            </Menu.Item>
-            <Menu.Item name="explore">
-              <Icon name="find" />
-              Explore
-            </Menu.Item>
-            <Menu.Item name="schedule">
-              <Icon name="calendar outline" />
-              Schedule
-            </Menu.Item>
-            <Menu.Item name="idCard">
-              <Icon name="id card" />
-              ID card
-            </Menu.Item>
-          </Sidebar>
-          <Sidebar.Pusher dimmed={this.state.sidebarContentDim}>
+        <Header />
+        <div style={{ display: 'flex', minHeight: '90vh' }}>
+          <Sidebar />
+          <div style={{ flex: '1 1 auto' }}>
             <DashboardContainer />
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
+          </div>
+        </div>
       </div>
     )
   }

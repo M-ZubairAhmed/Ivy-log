@@ -11,6 +11,7 @@ export default class Sidebar extends React.Component {
 
   handleClick = (event, { name }) => {
     this.setState({ activePage: name })
+    this.props.router(name)
   }
 
   render() {

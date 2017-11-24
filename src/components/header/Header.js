@@ -9,8 +9,7 @@ export default class Header extends React.Component {
   }
 
   signout() {
-    console.log('signing out')
-    return this.props.signout
+    this.props.authenticate(false)
   }
 
   dropdownDesign = (

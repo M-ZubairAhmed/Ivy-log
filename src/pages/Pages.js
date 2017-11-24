@@ -9,31 +9,38 @@ export default class Pages extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sidebarVisible: false,
-      sidebarContentDim: false,
       currentPage: 'dashboard',
     }
   }
 
-  router(page) {
-    switch (page) {
+  router = changedPage => {
+    console.log(changedPage)
+    if (this.state.currentPage !== changedPage) {
+      this.setState({
+        currentPage: changedPage,
+      })
+    }
+  }
+
+  renderPage = selectedPage => {
+    switch (selectedPage) {
       case 'dashboard':
         return <DashboardContainer />
       case 'explore':
         return <ExploreContainer />
       default:
-        return <div>Under construction</div>
+        return <div />
     }
   }
 
   render() {
     return (
       <div>
-        <Header />
+        <Header authenticate={this.props.authenticate} />
         <div style={{ display: 'flex', minHeight: '90vh' }}>
-          <Sidebar />
+          <Sidebar router={this.router} />
           <div style={{ flex: '1 1 auto', padding: '1rem' }}>
-            <DashboardContainer />
+            {this.renderPage(this.state.currentPage)}
           </div>
         </div>
       </div>

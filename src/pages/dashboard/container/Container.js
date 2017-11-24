@@ -15,21 +15,21 @@ export default class DashboardContainer extends React.Component {
     }
   }
   async componentDidMount() {
-    // const allSubjectsDb = fireDatabase.ref('Classes')
-    // allSubjectsDb.on('value', snapshot => {
-    //   const subjectsOnDB = snapshot.val()
-    //   const subjectsOnClient = []
-    //   for (let subjectOnDB in subjectsOnDB) {
-    //     subjectsOnClient.push({
-    //       subjectName: subjectsOnDB[subjectOnDB].sub,
-    //       id: subjectOnDB,
-    //     })
-    //   }
-    //   this.setState({
-    //     subjects: subjectsOnClient,
-    //     loading: false,
-    //   })
-    // })
+    const allSubjectsDb = fireDatabase.ref('Classes')
+    allSubjectsDb.on('value', snapshot => {
+      const subjectsOnDB = snapshot.val()
+      const subjectsOnClient = []
+      for (let subjectOnDB in subjectsOnDB) {
+        subjectsOnClient.push({
+          subjectName: subjectsOnDB[subjectOnDB].sub,
+          id: subjectOnDB,
+        })
+      }
+      this.setState({
+        subjects: subjectsOnClient,
+        loading: false,
+      })
+    })
     const newsResponse = await axios.get(newsURL)
     const news = await newsResponse.data.articles
     await this.setState({

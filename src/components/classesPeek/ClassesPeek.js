@@ -18,7 +18,10 @@ export default props => (
         <Statistic.Label>in 6 days</Statistic.Label>
       </Statistic>
       <Statistic color="grey">
-        <Statistic.Label style={{ cursor: 'pointer', color: 'grey' }}>
+        <Statistic.Label
+          style={{ cursor: 'pointer', color: 'grey' }}
+          onClick={() => props.action(props.actionValue)}
+        >
           {props.actionText}
         </Statistic.Label>
       </Statistic>

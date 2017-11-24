@@ -35,7 +35,7 @@ export default class DashboardContainer extends React.Component {
   render() {
     return (
       <div>
-        <DashboardComponent news={this.state.news} />
+        <DashboardComponent news={this.state.news} router={this.props.router} />
         {this.state.subjects.map(subject => (
           <div key={subject.id}>{subject.subjectName}</div>
         ))}

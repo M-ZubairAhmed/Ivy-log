@@ -9,9 +9,17 @@ export default class Sidebar extends React.Component {
     }
   }
 
+  componentDidUpdate() {
+    if (this.props.currentPage !== this.state.activePage) {
+      this.setState({ activePage: this.props.currentPage })
+    }
+  }
+
   handleClick = (event, { name }) => {
-    this.setState({ activePage: name })
-    this.props.router(name)
+    if (this.state.activePage !== name) {
+      this.setState({ activePage: name })
+      this.props.router(name)
+    }
   }
 
   render() {

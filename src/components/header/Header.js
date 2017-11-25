@@ -14,6 +14,7 @@ export default class Header extends React.Component {
 
   dropdownDesign = (
     <span>
+      {this.props.userName}
       <Image avatar src={this.props.userImage} />
     </span>
   )
@@ -23,7 +24,7 @@ export default class Header extends React.Component {
   render() {
     return (
       <Menu borderless style={{ marginBottom: '0px' }}>
-        <Menu.Item header>Teacher/Student Log</Menu.Item>
+        <Menu.Item header>Ivy Log</Menu.Item>
         <Menu.Menu position="right">
           <Dropdown
             item

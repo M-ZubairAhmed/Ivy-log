@@ -43,7 +43,11 @@ export default class Pages extends React.Component {
   render() {
     return (
       <div>
-        <Header authenticate={this.props.authenticate} />
+        <Header
+          authenticate={this.props.authenticate}
+          userName={this.props.userAuthObject.displayName}
+          userImage={this.props.userAuthObject.photoURL}
+        />
         <div style={{ display: 'flex', minHeight: '90vh' }}>
           <Sidebar router={this.router} currentPage={this.state.currentPage} />
           <div style={{ flex: '1 1 auto', padding: '1rem' }}>

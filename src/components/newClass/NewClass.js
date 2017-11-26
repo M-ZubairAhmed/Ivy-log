@@ -9,20 +9,18 @@ export default class ModalExampleControlled extends React.Component {
     description: '',
     duration: '',
     datetime: moment(),
+    classID: '',
   }
 
   handleClose = () => this.props.toggleAddNewClass(false)
 
   handleSubmit = () => {
-    const name = this.state.name.trim()
-    const description = this.state.description.trim()
-    const duration = this.state.duration
-    const datetime = moment(this.state.datetime).valueOf()
     const newClass = {
-      name,
-      description,
-      datetime,
-      duration,
+      name: this.state.name.trim(),
+      description: this.state.description.trim(),
+      duration: this.state.duration,
+      datetime: moment(this.state.datetime).valueOf(),
+      classID: this.state.classID,
     }
     this.props.addNewClassToDB(newClass)
     this.handleClose()
@@ -73,6 +71,16 @@ export default class ModalExampleControlled extends React.Component {
                 value={this.state.duration}
                 onChange={event =>
                   this.setState({ duration: event.target.value })
+                }
+              />
+            </Form.Field>
+            <Form.Field>
+              <label>Class ID</label>
+              <Input
+                placeholder="enter a 6 letter alphanumeric id"
+                value={this.state.classID}
+                onChange={event =>
+                  this.setState({ classID: event.target.value })
                 }
               />
             </Form.Field>

@@ -35,17 +35,25 @@ export default class DashboardContainer extends React.Component {
         loading: false,
       })
     })
-    ///
+    // Updating users in dp
     // const user = this.props.userAuthObject
     // user
     //   .updateProfile({
-    //     // displayName: 'John Watson',
-    //     // photoURL:
-    //     // 'https://pm1.narvii.com/5702/b9a7ef349c3640a3ed0b9de981c7bfca391023e4_128.jpg',
-    //     isStudent: false,
+    //     displayName: 'Elliot Anderson',
+    //     photoURL:
+    //       'http://sm.ign.com/t/ign_in/review/m/mr-robot-h/mr-robot-hellofriendmov-review_qxqa.640.jpg',
     //   })
     //   .then(() => console.log('saved'))
     //   .catch(error => console.log(error))
+    // Adding users in dp
+    // fireDatabase.ref('USERS/' + this.props.userAuthObject.uid).set({
+    //   uid: this.props.userAuthObject.uid,
+    //   displayName: this.props.userAuthObject.displayName,
+    //   email: this.props.userAuthObject.email,
+    //   photoURL: this.props.userAuthObject.photoURL,
+    //   isStudent: true,
+    //   classes: [],
+    // })
   }
 
   toggleAddNewClass = shouldAddNewClass => {
@@ -60,12 +68,13 @@ export default class DashboardContainer extends React.Component {
         enrolls: 0,
       },
     }
-    const subjectsNodeRef = await fireDatabase.ref('CLASSES')
-    await subjectsNodeRef.push().set(newClass)
+    const subjectsNodeRef = await fireDatabase.ref(
+      'CLASSES/' + newClass.classID,
+    )
+    await subjectsNodeRef.set(newClass)
   }
 
   render() {
-    console.log(this.props.userAuthObject)
     return (
       <div>
         <DashboardComponent

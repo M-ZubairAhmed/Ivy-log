@@ -1,5 +1,5 @@
 import React from 'react'
-import { Message, Button, Form, Grid, Header } from 'semantic-ui-react'
+import { Message, Button, Form, Grid, Header, Loader } from 'semantic-ui-react'
 
 import { fireAuth } from '../../utils/fire'
 
@@ -29,6 +29,7 @@ export default class Login extends React.Component {
       })
       return false
     } else {
+      // eslint-disable-next-line
       const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       if (!regex.test(email)) {
         this.setState({
@@ -62,7 +63,7 @@ export default class Login extends React.Component {
           message: 'No user found by that email',
         })
       } else {
-        const user = await fireAuth.signInWithEmailAndPassword(email, password)
+        await fireAuth.signInWithEmailAndPassword(email, password)
         await this.props.authenticate(true)
       }
     } catch (err) {
@@ -119,7 +120,13 @@ export default class Login extends React.Component {
               >
                 Login
               </Button>
-              <Message>{this.state.message}</Message>
+              <Message>
+                {this.state.message === 'Checking for authentication' ? (
+                  <Loader active inline="centered" />
+                ) : (
+                  this.state.message
+                )}
+              </Message>
             </Form>
           </Grid.Column>
         </Grid>

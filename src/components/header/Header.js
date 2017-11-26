@@ -14,8 +14,7 @@ export default class Header extends React.Component {
 
   dropdownDesign = (
     <span>
-      {this.props.userName}
-      <Image avatar src={this.props.userImage} />
+      {this.props.userName} <Image avatar src={this.props.userImage} />
     </span>
   )
 

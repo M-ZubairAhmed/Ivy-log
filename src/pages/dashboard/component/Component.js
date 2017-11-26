@@ -22,18 +22,21 @@ export default class DashboardComponent extends React.Component {
           action={this.props.router}
           actionValue="schedule"
         />
-        <ClassesPeek
-          title="Recomended classes for you"
-          actionText="Explore all classes"
-          action={this.props.router}
-          actionValue="explore"
-        />
-        <ClassesPeek
-          title="Teaching track"
-          actionText="Create a class"
-          action={this.props.toggleAddNewClass}
-          actionValue={true}
-        />
+        {this.props.isStudent ? (
+          <ClassesPeek
+            title="Recomended classes for you"
+            actionText="Explore all classes"
+            action={this.props.router}
+            actionValue="explore"
+          />
+        ) : (
+          <ClassesPeek
+            title="Teaching track"
+            actionText="Create a class"
+            action={this.props.toggleAddNewClass}
+            actionValue={true}
+          />
+        )}
         <News news={this.props.news} />
         <NewClass
           addNewClassToDB={this.props.addNewClassToDB}

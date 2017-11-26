@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Pages from './pages/Pages'
 import Login from './pages/login/Login'
-import { fireAuth } from './utils/fire'
+import { fireAuth, fireDatabase } from './utils/fire'
 
 export default class App extends Component {
   constructor() {
@@ -10,11 +10,12 @@ export default class App extends Component {
     this.state = {
       isAuthenticated: false,
       userAuthObject: null,
+      userObject: null,
     }
   }
 
-  login() {
-    fireAuth.onAuthStateChanged(user => {
+  async login() {
+    await fireAuth.onAuthStateChanged(user => {
       if (user) {
         this.setState({
           isAuthenticated: true,
@@ -24,8 +25,8 @@ export default class App extends Component {
     })
   }
 
-  logout() {
-    fireAuth
+  async logout() {
+    await fireAuth
       .signOut()
       .then(() => console.log('signed out'))
       .catch(error => console.log(error.message))
@@ -35,15 +36,25 @@ export default class App extends Component {
   }
 
   authenticate = shouldAuthenticate => {
-    if (shouldAuthenticate === false) {
-      this.logout()
-    } else {
-      this.login()
-    }
+    shouldAuthenticate ? this.login() : this.logout()
   }
 
-  componentWillMount() {
-    this.login()
+  async componentWillMount() {
+    await this.login()
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
+    if (prevState.userAuthObject !== this.state.userAuthObject) {
+      const refToUser = await fireDatabase
+        .ref('USERS/' + this.state.userAuthObject.uid)
+        .once('value')
+      const userObjectOnDB = await refToUser.val()
+      if (this.state.userAuthObject !== null) {
+        await this.setState({
+          userObject: userObjectOnDB,
+        })
+      }
+    }
   }
 
   render() {
@@ -53,6 +64,7 @@ export default class App extends Component {
           isAuthenticated={this.state.isAuthenticated}
           authenticate={this.authenticate}
           userAuthObject={this.state.userAuthObject}
+          userObject={this.state.userObject}
         />
       )
     } else {

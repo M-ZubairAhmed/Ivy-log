@@ -81,6 +81,7 @@ export default class DashboardContainer extends React.Component {
           news={this.state.news}
           router={this.props.router}
           userName={this.props.userAuthObject.displayName}
+          isStudent={this.props.userObject.isStudent}
           toggleAddNewClass={this.toggleAddNewClass}
           isShownNewClass={this.state.isShownNewClass}
           addNewClassToDB={this.addNewClassToDB}

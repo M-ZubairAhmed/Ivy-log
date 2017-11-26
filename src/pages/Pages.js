@@ -1,12 +1,11 @@
 import React from 'react'
+import { Loader, Dimmer } from 'semantic-ui-react'
 
 import Header from '../components/header/Header'
 import Sidebar from '../components/sidebar/Sidebar'
 import DashboardContainer from './dashboard/container/Container'
 import ExploreContainer from './explore/container/Container'
 import ScheduleContainer from './schedule/Container'
-
-import { fireDatabase } from '../utils/fire'
 
 export default class Pages extends React.Component {
   constructor(props) {
@@ -15,15 +14,6 @@ export default class Pages extends React.Component {
       currentPage: 'dashboard',
       userObject: {},
     }
-  }
-
-  componentdidMount() {
-    console.log('componentDidMount')
-    const refToUser = fireDatabase
-      .ref('USERS/' + this.props.userAuthObject.uid)
-      .once('value')
-    const userObjectOnDB = refToUser.val()
-    console.log(userObjectOnDB.name)
   }
 
   router = changedPage => {
@@ -41,6 +31,7 @@ export default class Pages extends React.Component {
           <DashboardContainer
             router={this.router}
             userAuthObject={this.props.userAuthObject}
+            userObject={this.props.userObject}
           />
         )
       case 'explore':
@@ -55,17 +46,33 @@ export default class Pages extends React.Component {
   render() {
     return (
       <div>
-        <Header
-          authenticate={this.props.authenticate}
-          userName={this.props.userAuthObject.displayName}
-          userImage={this.props.userAuthObject.photoURL}
-        />
-        <div style={{ display: 'flex', minHeight: '90vh' }}>
-          <Sidebar router={this.router} currentPage={this.state.currentPage} />
-          <div style={{ flex: '1 1 auto', padding: '1rem' }}>
-            {this.renderPage(this.state.currentPage)}
+        {this.props.userAuthObject && this.props.userObject ? (
+          <div>
+            <Header
+              authenticate={this.props.authenticate}
+              userName={this.props.userAuthObject.displayName}
+              userImage={this.props.userAuthObject.photoURL}
+            />
+            <div style={{ display: 'flex', minHeight: '90vh' }}>
+              <Sidebar
+                router={this.router}
+                currentPage={this.state.currentPage}
+              />
+              <div style={{ flex: '1 1 auto', padding: '1rem' }}>
+                {this.renderPage(this.state.currentPage)}
+              </div>
+            </div>
           </div>
-        </div>
+        ) : (
+          <Dimmer active inverted>
+            <Loader>
+              <h3>
+                Preparing your <br />
+                Ivy Logger Dashboard
+              </h3>
+            </Loader>
+          </Dimmer>
+        )}
       </div>
     )
   }

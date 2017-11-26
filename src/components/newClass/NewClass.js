@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Header, Icon, Modal, Form, Input } from 'semantic-ui-react'
+import { Button, Header, Modal, Form, Input } from 'semantic-ui-react'
 import DateTime from 'react-datetime'
 import moment from 'moment'
 

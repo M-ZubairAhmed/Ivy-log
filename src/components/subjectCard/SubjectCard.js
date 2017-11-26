@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image, Button } from 'semantic-ui-react'
+import { Card, Icon, Button } from 'semantic-ui-react'
 import moment from 'moment'
 
 export default props => (

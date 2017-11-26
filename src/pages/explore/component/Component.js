@@ -11,6 +11,7 @@ export default props => (
       <Card.Group>
         {props.subjects.map(subject => (
           <SubjectCard
+            key={subject.classID}
             name={subject.name}
             classID={subject.classID}
             teacher={subject.teacher}

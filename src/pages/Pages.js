@@ -6,12 +6,24 @@ import DashboardContainer from './dashboard/container/Container'
 import ExploreContainer from './explore/container/Container'
 import ScheduleContainer from './schedule/Container'
 
+import { fireDatabase } from '../utils/fire'
+
 export default class Pages extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       currentPage: 'dashboard',
+      userObject: {},
     }
+  }
+
+  componentdidMount() {
+    console.log('componentDidMount')
+    const refToUser = fireDatabase
+      .ref('USERS/' + this.props.userAuthObject.uid)
+      .once('value')
+    const userObjectOnDB = refToUser.val()
+    console.log(userObjectOnDB.name)
   }
 
   router = changedPage => {

@@ -4,18 +4,14 @@ import { Header, Segment, Statistic } from 'semantic-ui-react'
 export default props => (
   <Segment>
     <Header size="medium">{props.title}</Header>
-    <Statistic.Group size="mini" widths="four">
+    <Statistic.Group size="mini" widths="three">
       <Statistic>
-        <Statistic.Value>Physics</Statistic.Value>
-        <Statistic.Label>in 5 days</Statistic.Label>
+        <Statistic.Label>2 days to</Statistic.Label>
+        <Statistic.Value>PTA meet</Statistic.Value>
       </Statistic>
       <Statistic>
-        <Statistic.Value>Three</Statistic.Value>
-        <Statistic.Label>in 6 days</Statistic.Label>
-      </Statistic>
-      <Statistic>
-        <Statistic.Value>Kinetics</Statistic.Value>
-        <Statistic.Label>in 6 days</Statistic.Label>
+        <Statistic.Label>5 days to</Statistic.Label>
+        <Statistic.Value>Winter break</Statistic.Value>
       </Statistic>
       <Statistic color="grey">
         <Statistic.Label

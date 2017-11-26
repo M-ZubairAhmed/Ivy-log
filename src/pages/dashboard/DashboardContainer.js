@@ -15,47 +15,6 @@ export default class DashboardContainer extends React.Component {
     }
   }
 
-  async componentDidMount() {
-    // const subjectsNodeRef = await fireDatabase.ref('CLASSES')
-    // await subjectsNodeRef.on('value', snapshot => {
-    //   const allSubjectsOnDB = snapshot.val()
-    //   const allSubjectsOnClient = []
-    //   for (let subjectOnDB in allSubjectsOnDB) {
-    //     allSubjectsOnClient.push({
-    //       id: subjectOnDB,
-    //       name: allSubjectsOnDB[subjectOnDB].name,
-    //       description: allSubjectsOnDB[subjectOnDB].description,
-    //       datetime: allSubjectsOnDB[subjectOnDB].datetime,
-    //       duration: allSubjectsOnDB[subjectOnDB].duration,
-    //       teacher: allSubjectsOnDB[subjectOnDB].teacher,
-    //     })
-    //   }
-    //   this.setState({
-    //     allSubjects: allSubjectsOnClient,
-    //     loading: false,
-    //   })
-    // })
-    // Updating users in dp
-    // const user = this.props.userAuthObject
-    // user
-    //   .updateProfile({
-    //     displayName: 'Elliot Anderson',
-    //     photoURL:
-    //       'http://sm.ign.com/t/ign_in/review/m/mr-robot-h/mr-robot-hellofriendmov-review_qxqa.640.jpg',
-    //   })
-    //   .then(() => console.log('saved'))
-    //   .catch(error => console.log(error))
-    // Adding users in dp
-    // fireDatabase.ref('USERS/' + this.props.userAuthObject.uid).set({
-    //   uid: this.props.userAuthObject.uid,
-    //   displayName: this.props.userAuthObject.displayName,
-    //   email: this.props.userAuthObject.email,
-    //   photoURL: this.props.userAuthObject.photoURL,
-    //   isStudent: true,
-    //   classes: [],
-    // })
-  }
-
   toggleAddNewClass = shouldAddNewClass => {
     this.setState({ isShownNewClass: shouldAddNewClass })
   }

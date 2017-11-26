@@ -25,6 +25,7 @@ export default class Sidebar extends React.Component {
   render() {
     return (
       <Menu
+        icon="labeled"
         vertical
         style={{ marginTop: '0px', marginBottom: '0px' }}
         color="grey"

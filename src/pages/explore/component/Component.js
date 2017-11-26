@@ -19,6 +19,8 @@ export default props => (
             datetime={subject.datetime}
             enrolls={subject.enrolls}
             duration={subject.duration}
+            enrollIntoClass={props.enrollIntoClass}
+            isStudent={props.userObject.isStudent}
           />
         ))}
       </Card.Group>

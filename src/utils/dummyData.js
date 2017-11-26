@@ -1,15 +1,19 @@
 export const newsData = [
   {
-    source: { id: 'techcrunch', name: 'TechCrunch' },
-    author: 'Romain Dillet',
-    title: 'Revolut now has a million customers for its banking alternative',
+    source: {
+      id: 'recode',
+      name: 'Recode',
+    },
+    author: 'Rani Molla',
+    title:
+      'A startup investor with billion dollar exits on how retail must change',
     description:
-      'Fintech startup Revolut has reached a big milestone. The company now has over a million customers across Europe two years and a half after launch. The..',
+      'Kirsten Green, founder of Forerunner Ventures, breaks down the retail landscape.',
     url:
-      'https://techcrunch.com/2017/11/23/revolut-now-has-a-million-customers-for-its-banking-alternative/',
+      'https://www.recode.net/2017/9/13/16296366/code-commerce-forerunner-ventures-kirsten-green-retail',
     urlToImage:
-      'https://tctechcrunch2011.files.wordpress.com/2017/11/revolut-app_merchants.jpeg',
-    publishedAt: '2017-11-24T07:01:14Z',
+      'https://cdn0.vox-cdn.com/thumbor/Tqd7I0Or4YFlECaLHS_sc35HbYw=/0x0:2880x1508/fit-in/1200x630/cdn1.vox-cdn.com/uploads/chorus_asset/file/9239097/REC_KMACDONALD_CODECOMMERCE17_20170913_114051_3455.jpg',
+    publishedAt: '2017-09-13T15:36:30Z',
   },
   {
     source: { id: 'techcrunch', name: 'TechCrunch' },
@@ -23,16 +27,32 @@ export const newsData = [
     publishedAt: '2017-11-23T15:15:57Z',
   },
   {
-    source: { id: 'techcrunch', name: 'TechCrunch' },
-    author: 'Darrell Etherington',
-    title:
-      'Tesla completes the world’s largest battery for Australian wind farm',
+    source: {
+      id: 'engadget',
+      name: 'Engadget',
+    },
+    author: 'Chris Ip',
+    title: '‘Flying Lotus in 3D’ is a jam session between music and holograms',
     description:
-      "Tesla has managed to deliver something on time, even if it \\'s falling behind its projections for the Model 3 electric car: It has completed production of a..",
+      "At Flying Lotus' concerts, 3D effects are keeping smartphones at bay.",
     url:
-      'https://techcrunch.com/2017/11/23/tesla-completes-the-worlds-largest-battery-for-australian-wind-farm/',
+      'https://www.engadget.com/2017/11/25/flying-lotus-in-3d-concert-interview/',
     urlToImage:
-      'https://tctechcrunch2011.files.wordpress.com/2017/11/gettyimages-855492106.jpg',
-    publishedAt: '2017-11-23T13:28:54Z',
+      'https://o.aolcdn.com/images/dims?thumbnail=1200%2C630&quality=80&image_uri=https%3A%2F%2Fo.aolcdn.com%2Fimages%2Fdims%3Fresize%3D2000%252C2000%252Cshrink%26image_uri%3Dhttp%253A%252F%252Fo.aolcdn.com%252Fhss%252Fstorage%252Fmidas%252Fdec188e03b950616a04f91f60d39a23b%252F205891815%252Fflylo2.jpg%26client%3Da1acac3e1b3290917d92%26signature%3Deb409b0bd05ebee59d4612bec05dbfff4199e72b&client=cbc79c14efcebee57402&signature=8e23d421dd6409530765db21066f588f95fb938a',
+    publishedAt: '2017-11-25T16:30:00Z',
+  },
+  {
+    source: {
+      id: 'hacker-news',
+      name: 'Hacker News',
+    },
+    author: null,
+    title: 'Lisp in less than 200 lines of C',
+    description:
+      'Title: a brief and simple programming language implementationTags: lambda calculus, Lisp, C, programmingAuthors:',
+    url:
+      'https://carld.github.io/2017/06/20/lisp-in-less-than-200-lines-of-c.html',
+    urlToImage: null,
+    publishedAt: null,
   },
 ]

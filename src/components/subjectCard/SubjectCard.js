@@ -26,9 +26,15 @@ export default props => (
           <Icon name="users" />
           {props.enrolls === 0 ? 'No enrollments' : `${props.enrolls} enrolled`}
         </span>
-        <Button basic style={styles.button}>
-          Enroll
-        </Button>
+        {props.isStudent ? (
+          <Button
+            basic
+            style={styles.button}
+            onClick={() => props.enrollIntoClass(props.classID)}
+          >
+            Enroll
+          </Button>
+        ) : null}
       </div>
     </Card.Content>
   </Card>

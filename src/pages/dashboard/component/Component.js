@@ -9,13 +9,7 @@ export default class DashboardComponent extends React.Component {
   render() {
     return (
       <div>
-        <Header
-          as="h1"
-          userName={this.props.userName}
-          userImage={this.props.userImage}
-        >
-          Dashboard
-        </Header>
+        <Header as="h1">Dashboard</Header>
         <ClassesPeek
           title="Upcoming classes"
           actionText="View your schedule"

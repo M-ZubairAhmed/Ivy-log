@@ -16,25 +16,25 @@ export default class DashboardContainer extends React.Component {
   }
 
   async componentDidMount() {
-    const subjectsNodeRef = await fireDatabase.ref('CLASSES')
-    await subjectsNodeRef.on('value', snapshot => {
-      const allSubjectsOnDB = snapshot.val()
-      const allSubjectsOnClient = []
-      for (let subjectOnDB in allSubjectsOnDB) {
-        allSubjectsOnClient.push({
-          id: subjectOnDB,
-          name: allSubjectsOnDB[subjectOnDB].name,
-          description: allSubjectsOnDB[subjectOnDB].description,
-          datetime: allSubjectsOnDB[subjectOnDB].datetime,
-          duration: allSubjectsOnDB[subjectOnDB].duration,
-          teacher: allSubjectsOnDB[subjectOnDB].teacher,
-        })
-      }
-      this.setState({
-        allSubjects: allSubjectsOnClient,
-        loading: false,
-      })
-    })
+    // const subjectsNodeRef = await fireDatabase.ref('CLASSES')
+    // await subjectsNodeRef.on('value', snapshot => {
+    //   const allSubjectsOnDB = snapshot.val()
+    //   const allSubjectsOnClient = []
+    //   for (let subjectOnDB in allSubjectsOnDB) {
+    //     allSubjectsOnClient.push({
+    //       id: subjectOnDB,
+    //       name: allSubjectsOnDB[subjectOnDB].name,
+    //       description: allSubjectsOnDB[subjectOnDB].description,
+    //       datetime: allSubjectsOnDB[subjectOnDB].datetime,
+    //       duration: allSubjectsOnDB[subjectOnDB].duration,
+    //       teacher: allSubjectsOnDB[subjectOnDB].teacher,
+    //     })
+    //   }
+    //   this.setState({
+    //     allSubjects: allSubjectsOnClient,
+    //     loading: false,
+    //   })
+    // })
     // Updating users in dp
     // const user = this.props.userAuthObject
     // user
@@ -76,22 +76,15 @@ export default class DashboardContainer extends React.Component {
 
   render() {
     return (
-      <div>
-        <DashboardComponent
-          news={this.state.news}
-          router={this.props.router}
-          userName={this.props.userAuthObject.displayName}
-          isStudent={this.props.userObject.isStudent}
-          toggleAddNewClass={this.toggleAddNewClass}
-          isShownNewClass={this.state.isShownNewClass}
-          addNewClassToDB={this.addNewClassToDB}
-        />
-        {this.state.allSubjects.map(subject => (
-          <div key={subject.id}>
-            {subject.name} by {subject.teacher}
-          </div>
-        ))}
-      </div>
+      <DashboardComponent
+        news={this.state.news}
+        router={this.props.router}
+        userName={this.props.userAuthObject.displayName}
+        isStudent={this.props.userObject.isStudent}
+        toggleAddNewClass={this.toggleAddNewClass}
+        isShownNewClass={this.state.isShownNewClass}
+        addNewClassToDB={this.addNewClassToDB}
+      />
     )
   }
 }

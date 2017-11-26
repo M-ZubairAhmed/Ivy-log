@@ -35,7 +35,7 @@ export default class Pages extends React.Component {
           />
         )
       case 'explore':
-        return <ExploreContainer />
+        return <ExploreContainer userObject={this.props.userObject} />
       case 'schedule':
         return <ScheduleContainer />
       default:

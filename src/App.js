@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import Pages from './pages/Pages'
-import Login from './pages/login/Login'
+import Login from './pages/login/LoginContainer'
 import { fireAuth, fireDatabase } from './utils/fire'
 
 export default class App extends Component {

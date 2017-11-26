@@ -1,8 +1,8 @@
 import React from 'react'
 
-import DashboardComponent from '../component/Component'
-import { fireDatabase } from '../../../utils/fire'
-import { newsData } from '../../../utils/dummyData'
+import DashboardComponent from './DashboardComponent'
+import { fireDatabase } from '../../utils/fire'
+import { newsData } from '../../utils/dummyData'
 
 export default class DashboardContainer extends React.Component {
   constructor() {

@@ -3,9 +3,10 @@ import { Loader, Dimmer } from 'semantic-ui-react'
 
 import Header from '../components/header/Header'
 import Sidebar from '../components/sidebar/Sidebar'
-import DashboardContainer from './dashboard/container/Container'
-import ExploreContainer from './explore/container/Container'
-import ScheduleContainer from './schedule/Container'
+import DashboardContainer from './dashboard/DashboardContainer'
+import ExploreContainer from './explore/ExploreContainer'
+import ScheduleContainer from './schedule/ScheduleContainer'
+import IdCardComponent from './idCard/IdCardComponent'
 
 export default class Pages extends React.Component {
   constructor(props) {
@@ -37,7 +38,9 @@ export default class Pages extends React.Component {
       case 'explore':
         return <ExploreContainer userObject={this.props.userObject} />
       case 'schedule':
-        return <ScheduleContainer />
+        return <ScheduleContainer userObject={this.props.userObject} />
+      case 'idCard':
+        return <IdCardComponent userObject={this.props.userObject} />
       default:
         return <div />
     }

@@ -1,12 +1,15 @@
 import React from 'react'
 
-import { fireDatabase } from '../../../utils/fire'
-import ExploreComponent from '../component/Component'
+import { fireDatabase } from '../../utils/fire'
+import ExploreComponent from './ExploreComponent'
 
 export default class ExploreContainer extends React.Component {
-  state = {
-    subjects: [],
-    loading: true,
+  constructor(props) {
+    super(props)
+    this.state = {
+      subjects: [],
+      loading: true,
+    }
   }
 
   async componentDidMount() {
@@ -32,14 +35,16 @@ export default class ExploreContainer extends React.Component {
     const classRefNode = await fireDatabase
       .ref('CLASSES/' + classID)
       .once('value')
-    const classObjectOnDB = await classRefNode.val()
+    let classObjectOnDB = await classRefNode.val()
+    // 3. Incrementing enroll value
+    classObjectOnDB.enrolls = (await classObjectOnDB.enrolls) + 1
+    await fireDatabase
+      .ref(`CLASSES/${classID}/enrolls`)
+      .set(classObjectOnDB.enrolls)
     // 2. Attaching to logged in user
     await fireDatabase
       .ref(`USERS/${this.props.userObject.uid}/classes/${classID}`)
       .set(classObjectOnDB)
-    // 3. Incrementing enroll value
-    const newEnrollValue = (await classObjectOnDB.enrolls) + 1
-    await fireDatabase.ref(`CLASSES/${classID}/enrolls`).set(newEnrollValue)
   }
 
   render() {
